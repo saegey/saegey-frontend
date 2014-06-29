@@ -1,0 +1,10 @@
+<li class="list-group-item" ng-repeat="day in data.days">
+    <h4>{{day.date | amDateFormat:'dddd, MMMM Do YYYY'}}</h4>
+    <div class="daily-place" ng-repeat="segment in day.segments">
+        <p>
+            <a href="http://maps.google.com/maps?&amp;z=17&amp;q={{ segment.place.location.lat }}+{{ segment.place.location.lon }}">
+                {{ segment.place.name }}
+            </a>
+        </p>
+    </div>
+</li>

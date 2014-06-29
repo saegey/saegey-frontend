@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html class="no-js" ng-app="app">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Gulp Angular Starter Template</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- build:css -->
+        <link rel="stylesheet" href="assets/vendor/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/main.css">
+        <!-- endbuild -->
+
+        <!-- build:vendor -->
+        <script src="assets/vendor/lodash/dist/lodash.min.js"></script>
+        <script src="assets/vendor/angular/angular.js"></script>
+        <script src="assets/vendor/angular-route/angular-route.js"></script>
+        <script src="assets/vendor/angular-resource/angular-resource.js"></script>
+        <script src="assets/vendor/angular-bootstrap/ui-bootstrap.min.js"></script>
+        <script src="assets/vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+        <script src="assets/vendor/restangular/dist/restangular.min.js"></script>
+        <script src="assets/vendor/angular-bindonce/bindonce.min.js"></script>
+        <script src="assets/vendor/moment/moment.js"></script>
+        <script src="assets/vendor/angular-moment/angular-moment.js"></script>
+        <script src="assets/vendor/angular-sanitize/angular-sanitize.js"></script>
+        <script src="assets/vendor/showdown/src/showdown.js"></script>
+        <script src="assets/vendor/angular-markdown-directive/markdown.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js -->
+        <script src="assets/js/app.js"></script>
+        <script src="assets/js/services.js"></script>
+        <script src="assets/js/controllers/bikes_controller.js"></script>
+        <script src="assets/js/controllers/photos_controller.js"></script>
+        <script src="assets/js/controllers/activity_places_controller.js"></script>
+        <!-- endbuild -->
+
+    </head>
+    <body>
+        <ng-include src="'assets/partials/_nav.html'"></ng-include>
+        <div class="container">
+            <ng-view></ng-view>
+        </div>
+    </body>
+</html>

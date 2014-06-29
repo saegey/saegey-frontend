@@ -1,0 +1,21 @@
+<h3>{{data.summary.name}}</h3>
+<h1>Cost: {{data.summary.total_cost}}</h1>
+<h1>Weight: {{data.summary.total_weight}}</h1>
+<table class="table table-striped">
+  <tr>
+    <th>Company</th>
+    <th>Item</th>
+    <th>Category</th>
+    <th>Sub category</th>
+    <th>Weight</th>
+    <th>Cost</th>
+  </tr>
+  <tr ng-repeat="part in data.parts">
+    <td>{{part.company}}</td>
+    <td>{{part.item}}</td>
+    <td>{{part.partcategory}}</td>
+    <td>{{part.partsubcategory}}</td>
+    <td>{{part.weight}}</td>
+    <td>{{part.cost}}</td>
+  </tr>
+</table>

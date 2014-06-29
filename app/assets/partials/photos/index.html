@@ -1,0 +1,14 @@
+<div class="col-md-8 col-md-offset-2">
+    <div class="thumbnail" ng-repeat="photo in data.photos">
+        <a href="{{ photo.link }}" target="_blank">
+            <img src="{{ photo.images.standard_resolution.url }}">
+        </a>
+        <div class="caption">
+            <p class="pull-right"><i class="fa fa-map-marker"></i>
+                <a href="http://maps.google.com/maps?&amp;z=17&amp;q={{ photo.location.latitude }}+{{ photo.location.longitude }}">
+                    {{ photo.location.name }}
+                </a>
+            </p>
+        <p>{{ photo.caption.text }}</p>
+    </div>
+</div>
