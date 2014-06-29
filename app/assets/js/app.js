@@ -6,7 +6,7 @@ var app = angular.module('app', [
     'restangular',
     'pasvaz.bindonce',
     'angularMoment',
-    'btford.markdown',
+    'hc.marked',
 ]);
 
 app.run(function ($rootScope, $http, $location, $route) {
@@ -60,7 +60,7 @@ app.controller('HomeCtrl', function ($scope, $http) {
 
 app.controller('ResumeController', ['$scope', 'Resume', function ($scope, Resume) {
     Resume.get({}, function(response) {
-        console.log(response);
+      console.log(response);
       $scope.data = response.files['resume.md'].content;
     });
 }]);
