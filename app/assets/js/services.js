@@ -10,20 +10,21 @@ angular.module('app.services', ['ngResource'])
     })
   }])
   .factory('Photos',  ['$resource', function($resource) {
-    return $resource('http://api.saegey.com/v1/instagram/:type?limit=:limit', {
-   	  tag: '@type',
+    return $resource('http://api.saegey.com/v1/instagram/:type?page=:page&limit=:limit', {
+   	  type: '@type',
+      page: '@page',
    	  limit: '@limit',
     })
   }])
   .factory('ActivityPlaces',  ['$resource', function($resource) {
     return $resource('http://api.saegey.com/v1/moves/places?unique=true&page=:page&limit=:limit', {
-   	  tag: '@page',
+   	  page: '@page',
    	  limit: '@limit',
     })
   }])
   .factory('ActivitySummary',  ['$resource', function($resource) {
     return $resource('http://api.saegey.com/v1/moves/summary?unique=true&page=:page&limit=:limit', {
-   	  tag: '@page',
+   	  page: '@page',
    	  limit: '@limit',
     })
   }])
