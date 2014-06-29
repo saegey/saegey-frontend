@@ -179,5 +179,15 @@ gulp.task('build', function () {
         });
 });
 
+// gulp.task('heroku:production', function () {
+
+//     runSequence(
+//         'clean',
+//         'usemin',
+//         function () {
+//             $.util.log('Build complete');
+//         });
+// });
+
 gulp.task('default', ['connect', 'watch']);
 gulp.task('serve', ['connect', 'watch']);

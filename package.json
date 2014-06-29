@@ -23,7 +23,10 @@
   "bugs": {
     "url": "https://github.com/drewhjava/gulp-angular-starter/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.4.5",
+    "gzippo": "^0.2.0"
+  },
   "devDependencies": {
     "event-stream": "^3.1.5",
     "gulp": "^3.8.1",
