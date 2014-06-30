@@ -65,5 +65,13 @@ app.controller('ResumeController', ['$scope', 'Resume', function ($scope, Resume
     });
 }]);
 
+app.controller('HeaderController', ['$scope', '$location', function ($scope, $location) { 
+    $scope.notHome = function (viewLocation) { 
+        console.log($location.path());
+        console.log(viewLocation);
+        return viewLocation !== $location.path();
+    };
+}]);
+
 
 

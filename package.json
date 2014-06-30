@@ -24,9 +24,8 @@
     "url": "https://github.com/drewhjava/gulp-angular-starter/issues"
   },
   "dependencies": {
-    "express": "^4.4.5",
-    "gzippo": "^0.2.0",
     "event-stream": "^3.1.5",
+    "express": "^4.4.5",
     "gulp": "^3.8.1",
     "gulp-angular-templatecache": "^1.2.1",
     "gulp-bower-files": "^0.2.5",
@@ -42,9 +41,11 @@
     "gulp-ngmin": "^0.3.0",
     "gulp-print": "^1.1.0",
     "gulp-rev": "^0.4.1",
+    "gulp-sass": "^0.7.2",
     "gulp-spa": "^0.2.2",
     "gulp-uglify": "^0.3.1",
     "gulp-util": "^2.2.17",
+    "gzippo": "^0.2.0",
     "karma": "^0.12.16",
     "karma-chrome-launcher": "^0.1.4",
     "karma-jasmine": "^0.1.5",

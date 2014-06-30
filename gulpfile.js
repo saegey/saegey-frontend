@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var sass = require('gulp-sass');
 var runSequence = require('run-sequence');
 var karma = require('karma').server;
 var _ = require('lodash');
@@ -64,20 +65,6 @@ gulp.task('usemin', function () {
         .pipe(gulp.dest('./build'));
 });
 
-
-// Optional Manifest file
-// gulp.task('manifest', function () {
-//     gulp.src(['build/*'])
-//         .pipe($.manifest({
-//             hash: true,
-//             preferOnline: true,
-//             network: ['http://*', 'https://*', '*'],
-//             filename: 'app.manifest',
-//             exclude: ['app.manifest', 'index.html']
-//         }))
-//         .pipe(gulp.dest('build'));
-// });
-
 gulp.task('connect', function () {
     $.connect.server({
         root: './app',
@@ -109,10 +96,17 @@ gulp.task('css', function () {
         .pipe($.connect.reload());
 });
 
+gulp.task('sass', function () {
+    gulp.src('app/assets/scss/*.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('app/assets/css'))
+        .pipe($.connect.reload());
+});
+
 gulp.task('watch', function () {
     gulp.watch(['./app/*.html', './app/assets/partials/**/*.html'], ['html']);
     gulp.watch(['./app/assets/js/**/*.js'], ['scripts']);
-    gulp.watch(['./app/assets/css/**/*.css'], ['css']);
+    gulp.watch(['./app/assets/scss/*.scss'], ['sass']);
 });
 
 gulp.task('clean', function () {
@@ -172,6 +166,7 @@ gulp.task('tdd', function (done) {
 gulp.task('build', function () {
 
     runSequence(
+        'sass',
         'clean',
         'usemin',
         function () {
