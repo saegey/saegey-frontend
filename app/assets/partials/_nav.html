@@ -1,5 +1,6 @@
-<div class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="HeaderController" ng-show="notHome('/')">
+<div class="navbar navbar-default" role="navigation" ng-controller="HeaderController" ng-show="notHome('/')">
     <div class="container">
+      <div class="navbar-top">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -10,10 +11,19 @@
             <a class="navbar-brand" href="/#/">Saegey</a>
         </div>
         <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="http://instagram.com/saegey">Instagram</i></a></li>
+              <li><a href="http://github.com/saegey">Github</a></li>
+              <li><a href="http://linkedin.com/in/saegey/">LinkedIn</i></a></li>
+              <li><a href="http://twitter.com/saegey">Twitter</a></li>
+              <li><a href="https://www.facebook.com/saegey">Facebook</i></a>
+          </ul>
+        </div>
+      </div>
+        <div class="navbar-collapse collapse navbar-top">
             <ul class="nav navbar-nav">
-                <li ng-class="{active: $route.current.active == 'home'}"><a href="/#/">Home</a></li>
-                <li ng-class="{active: $route.current.active == 'resume'}"><a href="/#/resume">Resume</a></li>
                 <li ng-class="{active: $route.current.active == 'about'}"><a href="/#/about">About</a></li>
+                <li ng-class="{active: $route.current.active == 'resume'}"><a href="/#/resume">Resume</a></li>
                  <li ng-class="{active: $route.current.active == 'bikes'}" class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bikes <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
