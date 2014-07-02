@@ -48,10 +48,9 @@ gulp.task('usemin', function () {
                         .pipe($.rev());
 
                 },
-                css: function (files) {
+                sass: function (files) {
                     return files
                         .pipe($.minifyCss())
-                        .pipe($.concat('app.css'))
                         .pipe($.rev());
                 },
                 vendor: function (files) {
@@ -91,10 +90,10 @@ gulp.task('scripts', function () {
         .pipe($.connect.reload());
 });
 
-gulp.task('css', function () {
-    return gulp.src('app/assets/css/*.css')
-        .pipe($.connect.reload());
-});
+// gulp.task('css', function () {
+//     return gulp.src('app/assets/css/*.css')
+//         .pipe($.connect.reload());
+// });
 
 gulp.task('sass', function () {
     gulp.src('app/assets/scss/*.scss')
