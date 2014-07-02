@@ -21,9 +21,9 @@ $list-group-bg: lighten($body-bg, 15%);
 $jumbotron-bg: white;
 $jumbotron-color: $brand-primary;
 $link-color: gray;
-$thumbnail-border: 0;
 $border-radius-base: 0;
-$list-group-border: 0;
+$thumbnail-border: #fff !default;
+$list-group-border: #fff !default;
 $thumbnail-caption-padding: 0;
 // $nav-link-padding: 0 10px;
 
@@ -41,10 +41,8 @@ body {
     font-weight: 700;
 }
 
-.list-group {
-    li {
-        border: 0;
-    }
+.list-group-item {
+    padding-left: 0px;
 }
 
 .navbar-top {
@@ -59,7 +57,7 @@ body {
     font-family: $font-family-decorative;
   }
   a {
-    color: $brand-primary !important;
+    color: $brand-primary;
   }
   .nav {
     .open {

@@ -50,8 +50,8 @@ gulp.task('usemin', function () {
                 },
                 css: function (files) {
                     return files
-                        .pipe($.concat('main.css'))
                         .pipe($.minifyCss())
+                        .pipe($.concat('app.css'))
                         .pipe($.rev());
                 },
                 vendor: function (files) {
@@ -166,7 +166,6 @@ gulp.task('tdd', function (done) {
 gulp.task('build', function () {
 
     runSequence(
-        'sass',
         'clean',
         'usemin',
         function () {

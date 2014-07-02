@@ -859,7 +859,7 @@ img {
   padding: 4px;
   line-height: 1.42857;
   background-color: white;
-  border: 1px solid 0;
+  border: 1px solid #fff;
   border-radius: 0;
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
@@ -3368,7 +3368,7 @@ a.badge:hover, a.badge:focus {
   margin-bottom: 22px;
   line-height: 1.42857;
   background-color: white;
-  border: 1px solid 0;
+  border: 1px solid #fff;
   border-radius: 0;
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
@@ -3567,7 +3567,7 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
   padding: 10px 15px;
   margin-bottom: -1px;
   background-color: white;
-  border: 1px solid 0; }
+  border: 1px solid #fff; }
   .list-group-item:first-child {
     border-top-right-radius: 0;
     border-top-left-radius: 0; }
@@ -4589,8 +4589,8 @@ body {
 .navbar {
   font-weight: 700; }
 
-.list-group li {
-  border: 0; }
+.list-group-item {
+  padding-left: 0px; }
 
 .navbar-top {
   border-bottom: 1px solid #d9d9d9; }
@@ -4604,7 +4604,7 @@ body {
   .navbar .navbar-brand {
     font-family: "News Cycle"; }
   .navbar a {
-    color: #808080 !important; }
+    color: #808080; }
   .navbar .nav .open > a {
     background-color: #f2f2f2; }
   .navbar .nav .open .fa {
