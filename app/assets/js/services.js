@@ -5,7 +5,7 @@
 // In this case it is a simple value service.
 angular.module('app.services', ['ngResource'])
   .factory('BikeDetail',  ['$resource', function($resource) {
-    return $resource('http://api.saegey.com/v1/bikes/:tag', {
+    return $resource('http://api.saegey.com/v1/bikes/:tag?group_by=partcategory', {
    	  tag: '@tag'
     })
   }])

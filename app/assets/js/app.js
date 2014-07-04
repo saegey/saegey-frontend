@@ -25,6 +25,11 @@ app.config(function ($routeProvider) {
         controller: 'BikesController',
         active: 'bikes'
     }).
+    when('/bikes', {
+        templateUrl: 'assets/partials/bikes/index.html',
+        controller: 'BikesController',
+        active: 'bikes'
+    }).
     when('/photos/:type', {
         templateUrl: 'assets/partials/photos/index.html',
         controller: 'PhotosController',
