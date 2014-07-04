@@ -1,16 +1,16 @@
 <div class="row">
-<div class="col-md-12">
-<div class="nav-sub">
-  <ul class="nav nav-pills">
-  <li ng-class="{active: activeTab == 'crosscheck'}">
-    <a href="/#/bikes/crosscheck" class="text-uppercase">#Crosscheck</a>
-  </li>
-  <li ng-class="{active: activeTab == 'juice29er'}">
-    <a href="/#/bikes/juice29er" class="text-uppercase">#Juice29er</a>
-  </li>
-</ul>
-</div>
-</div>
+  <div class="col-md-12">
+    <div class="nav-sub">
+      <ul class="nav nav-pills">
+      <li ng-class="{active: activeTab == 'crosscheck'}">
+        <a href="/#/bikes/crosscheck" class="text-uppercase">#Crosscheck</a>
+      </li>
+      <li ng-class="{active: activeTab == 'juice29er'}">
+        <a href="/#/bikes/juice29er" class="text-uppercase">#Juice29er</a>
+      </li>
+    </ul>
+    </div>
+  </div>
 </div>
 
 <div id="bikes" class="row">
@@ -20,7 +20,8 @@
     </a>
   </div>
   <div class="col-md-9">
-  <h3>{{data.summary.name}}<span class="pull-right">{{data.summary.total_cost}}</span></h3>
+  <h3>{{data.summary.name}}</h3>
+  <span>{{data.summary.total_cost}}</span>
   <p>{{data.summary.total_weight}} grams</h1>
   <div ng-repeat="categoryParts in data.parts">
     <h3>{{ categoryParts[0].partcategory }}</h3>

@@ -35,6 +35,11 @@ app.config(function ($routeProvider) {
         controller: 'PhotosController',
         active: 'photos'
     }).
+    when('/photos', {
+        templateUrl: 'assets/partials/photos/index.html',
+        controller: 'PhotosController',
+        active: 'photos'
+    }).
     when('/activity/places', {
         templateUrl: 'assets/partials/activity/places.html',
         controller: 'ActivityPlacesController',

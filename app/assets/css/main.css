@@ -4598,6 +4598,9 @@ body {
 .navbar {
   margin-bottom: 0px !important; }
 
+.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+  margin-left: 0px; }
+
 .nav-sub {
   border-bottom: 1px solid #e6e6e6;
   margin-bottom: 15px; }
@@ -4687,6 +4690,8 @@ body {
   margin-bottom: 0; }
 #resume .list-unstyled, #resume .list-inline {
   padding-left: 0; }
+#resume p {
+  font-family: "Helvetica Neue", sans-serif !important; }
 #resume li {
   margin-bottom: 5px; }
 #resume h1 {
@@ -4733,7 +4738,8 @@ body {
 #about .img-circle {
   width: 300px; }
 #about .bio p {
-  font-size: 120%; }
+  font-size: 100%;
+  font-family: "Helvetica Neue", sans-serif !important; }
 
 #open-source .repo-name {
   margin-top: 0;

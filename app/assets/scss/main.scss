@@ -53,6 +53,9 @@ body {
 .navbar {
     margin-bottom: 0px !important;
 }
+.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+    margin-left: 0px;
+}
 .nav-sub {
     border-bottom: 1px solid lighten($saegey-gray, 40%);
     margin-bottom: 15px;
@@ -169,6 +172,9 @@ background-color: white;
   .list-unstyled {
     padding-left: 0;
   }
+  p {
+    font-family: $font-family-basic !important;
+  }
   li {
     margin-bottom: 5px;
   }
@@ -231,7 +237,8 @@ background-color: white;
   }
   .bio {
     p {
-      font-size: 120%;
+      font-size: 100%;
+      font-family: $font-family-basic !important;
     }
   }
 }
