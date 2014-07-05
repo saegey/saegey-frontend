@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-md-6">
+        <google-map center="map.center" zoom="map.zoom">
+            <polyline ng-repeat="p in map.polylines" path="p.path" stroke="p.stroke" visible='p.visible'
+            geodesic='p.geodesic' fit="true" editable="p.editable" draggable="true" icons='p.icons' refresh="showRides(data.rides.indexOf(ride))"></polyline>
+        </google-map>
+    </div>
+    <div class="col-md-6">
+    <div>
+            <table class="table" ng-show="data.rides">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Distance</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                <tr ng-repeat="ride in data.rides">
+                    <td>
+                        <input type="checkbox" checklist-model="data.selected" checklist-value="data.rides.indexOf(ride)">
+                    </td>
+                    <td>
+                        {{ ride.startTime | amDateFormat:'M.DD.YY' }}
+                    </td>
+                    <td>{{ ride.duration | movesToMin }} min</td>
+                    <td>{{ ride.distance | metersToMiles }} miles</td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>

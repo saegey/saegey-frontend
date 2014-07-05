@@ -1,9 +1,8 @@
 var app = angular.module('app');
 
 app.controller('ActivityController', ['$scope', '$routeParams', 'ActivityBike', function ($scope, $routeParams, ActivityBike) {
-    $scope.data = {};
-    $scope.selectedRides = [];
-
+    $scope.data = []
+    $scope.data = { selected: null };
     $scope.map = {
       version: "uknown",
       showTraffic: true,
@@ -30,11 +29,43 @@ app.controller('ActivityController', ['$scope', '$routeParams', 'ActivityBike', 
         $scope.data.rides = response.data;
     });
 
-    $scope.showRides = function(rideIndex){
-        // $scope.data.forEach(function())
-        //$scope.map = {};
+   //  $scope.myVar = 1;
+
+   // //  $scope.$watch('myVar', function() {
+   // //     console.log('hey, myVar has changed!');
+   // // });
+
+    $scope.buttonClicked = function() {
+      $scope.myVar += 1; // This will trigger $watch expression to kick in
+   };
+
+    $scope.$watch('data.selected', function(newVals, old){
+      // console.log(selectedRides);
+      if ($scope.data.selected) {
+        // ActivityBike.get({page: 1, limit: 10}, function(response) {
+        // $scope.data.rides = response.data;
+        // $scope.map = {
+        //     center: {
+        //       latitude:  response.data[selectedRides || 0].avgLat.toFixed(5),
+        //       longitude: response.data[selectedRides || 0].avgLon.toFixed(5),
+        //     },
+        //     events: {
+        //     tilesloaded: function (map) {
+        //        $scope.$apply(function () {
+        //           $log.info('this is the map instance', map);             
+        //       });
+        //     }
+        //   }
+        // }
         $scope.map['polylines'] = [];
-        $scope.selectedRides.forEach(function(rideId) {
+        if (newVals) {
+          selectedRides = newVals;
+        } else {
+          selectedRides = old;
+        }
+        console.log(selectedRides);
+        if (selectedRides) {
+          selectedRides.forEach(function(rideId) {
             $scope.map['polylines'].push({
                 path: $scope.data.rides[rideId].trackPoints,
                 stroke: {
@@ -47,21 +78,11 @@ app.controller('ActivityController', ['$scope', '$routeParams', 'ActivityBike', 
                 visible: true,
                 id: rideId
             });
-            $scope.map['center'] = {
-                latitude:  $scope.data.rides[rideId].avgLat.toFixed(5),
-                longitude: $scope.data.rides[rideId].avgLon.toFixed(5) 
-            }
-        });
-        console.log($scope.map);
-
-    //     $scope.map = {
-    // events: {
-    //     tilesloaded: function (map) {
-    //         $scope.$apply(function () {
-    //             $log.info('this is the map instance', map);             
-    //         });
-    //     }
-    }
+          });
+        }
+      console.log($scope.data.selected);
+      }
+    }, true);
 }]);
 
 
