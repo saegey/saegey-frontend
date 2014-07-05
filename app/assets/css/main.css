@@ -4586,6 +4586,12 @@ h1, h2, h3, h4, .navbar, .list-group, th, .btn-more {
 body {
   -webkit-font-smoothing: antialiased; }
 
+.table > thead > tr > th {
+  border-bottom: 1px solid #e6e6e6; }
+
+h1, h2, h3, h4, .navbar, .nav-pills, .small {
+  letter-spacing: 1px; }
+
 .list-group-item {
   padding-left: 0px; }
 
@@ -4621,7 +4627,6 @@ body {
   background-color: white; }
 
 .navbar {
-  letter-spacing: 1px;
   background: white;
   border: 0; }
   .navbar .navbar-brand {
@@ -4665,7 +4670,14 @@ body {
   font-weight: 500; }
 
 .btn-more {
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  font-weight: 700;
+  background-color: white;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 8px;
+  border: 2px solid #F00000;
+  color: #F00000; }
 
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .btn-default.dropdown-toggle {
   background-color: #d9d9d9 !important; }
@@ -4754,23 +4766,34 @@ body {
 #open-source .nav-pills {
   margin-bottom: 20px; }
 
-#bikes h1 {
-  font-family: "News Cycle"; }
+#bikes h3 {
+  margin-top: 0px; }
 #bikes .list-inline {
-  margin-bottom: 0; }
+  margin-top: 20px;
+  margin-bottom: 20px; }
   #bikes .list-inline li {
-    margin-right: 10px;
-    font-size: 85%; }
+    font-size: 120%;
+    margin-right: 10px; }
 #bikes .photos {
   margin-top: 25px; }
 #bikes p {
   margin-bottom: 0px; }
 #bikes .thumbnail {
   margin-bottom: 0; }
-#bikes table td:first-child {
+#bikes small {
+  color: #999999; }
+#bikes .sections {
+  margin-bottom: 10px; }
+  #bikes .sections li a {
+    padding-left: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px; }
+    #bikes .sections li a:hover {
+      background-color: white; }
+#bikes table td:first-child, #bikes table th:first-child {
   padding-left: 0px; }
-#bikes table td:last-child {
+#bikes table td:last-child, #bikes table th:last-child {
   padding-right: 0px; }
-#bikes table td .sub-category {
+#bikes table td .sub-category, #bikes table th .sub-category {
   margin-left: 10px;
   color: #a6a6a6; }

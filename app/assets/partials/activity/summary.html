@@ -1,8 +1,0 @@
-<li class="list-group-item" ng-repeat="day in data.days">
-    <h4>{{day.date | amDateFormat:'dddd, MMMM Do YYYY'}}</h4>
-    <div class="daily-place" ng-repeat="activity in day.summary">
-        <p>
-        	{{ upcase(activity.activity) }} – {{ convertToMiles(activity.distance) }}  / {{ convertToMinutes(activity.duration) }} min
-        </p>
-    </div>
-</li>

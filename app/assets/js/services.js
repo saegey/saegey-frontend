@@ -9,6 +9,13 @@ angular.module('app.services', ['ngResource'])
    	  tag: '@tag'
     })
   }])
+  .factory('BikeRides',  ['$resource', function($resource) {
+    return $resource('http://api.saegey.com/v1/bikes/:tag/rides?limit=:limit&page=:page', {
+      tag: '@tag',
+      page: '@page',
+      limit: '@limit',
+    })
+  }])
   .factory('Photos',  ['$resource', function($resource) {
     return $resource('http://api.saegey.com/v1/instagram/:type?page=:page&limit=:limit', {
    	  type: '@type',

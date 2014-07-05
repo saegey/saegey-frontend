@@ -7,7 +7,54 @@ var app = angular.module('app', [
     'pasvaz.bindonce',
     'angularMoment',
     'hc.marked',
+    'angular-loading-bar',
 ]);
+
+app.filter('metersToMiles', function () {
+    return function (input, round) {
+        if (round) {
+            return Math.round((input * 0.000621371))
+                       .toString()
+                       .replace(/(\d+)(\d{3})/, '$1'+','+'$2') + " mi";
+        } else {
+            return (input * 0.000621371).toFixed(2);
+        }
+        
+    }
+})
+
+app.filter('metersToFeet', function () {
+    return function (input) {
+        return Math.round(input * 3.28084) + "'";
+    }
+});
+
+app.filter('metersPerSecToMilesPerHr', function () {
+    return function (input) {
+        return (input * 2.23694).toFixed(2);
+    }
+});
+
+app.filter('secToMin', function () {
+    return function (input) {
+        return Math.round((input/60).toFixed(2)) + ' min';
+    }
+});
+
+app.filter('gramsToPounds', function() {
+    return function (input) {
+        return (input * 0.00220462).toFixed(2) + ' lbs';
+    }
+});
+
+app.filter('formatCurrency', function() {
+    return function (input) {
+        return '$' + input.replace(/\d(?=(\d{3})+\.)/g, '$&,')
+                          .split(".")[0]
+                          .replace('$', '');
+    }
+});
+
 
 app.run(function ($rootScope, $http, $location, $route) {
     $rootScope.$route = $route;
@@ -19,6 +66,11 @@ app.config(function ($routeProvider) {
         templateUrl: 'assets/partials/index.html',
         controller: 'HomeCtrl',
         active: 'home'
+    }).
+    when('/bikes/:tag/rides', {
+        templateUrl: 'assets/partials/bikes/rides.html',
+        controller: 'BikeController',
+        active: 'bikes'
     }).
     when('/bikes/:tag', {
         templateUrl: 'assets/partials/bikes/index.html',
@@ -40,14 +92,19 @@ app.config(function ($routeProvider) {
         controller: 'PhotosController',
         active: 'photos'
     }).
-    when('/activity/places', {
-        templateUrl: 'assets/partials/activity/places.html',
-        controller: 'ActivityPlacesController',
+    when('/code', {
+        templateUrl: 'assets/partials/code/index.html',
+        controller: 'CodeController',
+        active: 'code'
+    }).
+    when('/activity', {
+        templateUrl: 'assets/partials/activity/index.html',
+        controller: 'ActivityController',
         active: 'activity'
     }).
     when('/activity/summary', {
-        templateUrl: 'assets/partials/activity/summary.html',
-        controller: 'ActivitySummaryController',
+        templateUrl: 'assets/partials/activity/index.html',
+        controller: 'ActivityController',
         active: 'activity'
     }).
     when('/resume', {
@@ -78,7 +135,6 @@ app.controller('ResumeController', ['$scope', 'Resume', function ($scope, Resume
 app.controller('HeaderController', ['$scope', '$location', function ($scope, $location) { 
     $scope.notHome = function (viewLocation) { 
         console.log($location.path());
-        console.log(viewLocation);
         return viewLocation !== $location.path();
     };
 }]);

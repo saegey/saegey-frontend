@@ -13,21 +13,16 @@
   </div>
 </div>
 
-<div class="col-md-6 col-md-offset-3 photos">
-    <div class="thumbnail" ng-repeat="photo in data.photos">
-        <a href="{{ photo.link }}" target="_blank">
-            <img src="{{ photo.images.standard_resolution.url }}">
-        </a>
-        <div class="caption">
-        <p class="photo-text">{{ photo.caption.text }}</p>
-        <p ng-if="photo.location.name">
-            <a href="http://maps.google.com/maps?&amp;z=17&amp;q={{ photo.location.latitude }}+{{ photo.location.longitude }}">
-                {{ photo.location.name }}
-            </a>
-        </p>
+<div class="row">
+    <div class="col-md-3" ng-repeat="photo in data.photos">
+      <div class="thumbnail">
+          <a href="{{ photo.link }}" target="_blank">
+              <img src="{{ photo.images.standard_resolution.url }}">
+          </a>
+      </div>
     </div>
 </div>
-<div class="">
-    <btn class="btn btn-primary btn-more center-block" ng-click="data.loadMore()">More</btn>
+<div class="row text-center">
+        <btn class="btn btn-primary btn-more" ng-click="data.loadMore()">More</btn>
 </div>
 

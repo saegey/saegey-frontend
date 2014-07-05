@@ -39,6 +39,14 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+.table > thead > tr > th {
+  border-bottom: 1px solid lighten($saegey-gray, 40%);
+}
+
+h1, h2, h3, h4, .navbar, .nav-pills, .small {
+      letter-spacing: 1px;
+}
+
 .list-group-item {
     padding-left: 0px;
 }
@@ -77,7 +85,6 @@ background-color: white;
     background-color: white;
 }
 .navbar {
-    letter-spacing: 1px;
   .navbar-brand {
     font-family: $font-family-decorative;
     color: #F00000;
@@ -138,6 +145,13 @@ background-color: white;
 
 .btn-more {
     margin-bottom: 20px;
+    font-weight: 700;
+    background-color: white;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 8px;
+    border: 2px solid #F00000;
+    color: #F00000;
 }
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .btn-default.dropdown-toggle {
   background-color: darken($body-bg, 15%) !important;
@@ -262,14 +276,15 @@ background-color: white;
 }
 
 #bikes {
-  h1 {
-    font-family: $font-family-decorative;
+  h3 {
+    margin-top: 0px;
   }
   .list-inline {
-    margin-bottom: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
     li {
+      font-size: 120%;
       margin-right: 10px;
-      font-size: 85%;
     }
   }
   .photos {
@@ -281,8 +296,25 @@ background-color: white;
   .thumbnail {
     margin-bottom: 0;
   }
+  small {
+    color: lighten($saegey-gray, 10%);
+  }
+  .sections {
+    margin-bottom: 10px;
+    li {
+
+      a {
+              &:hover {
+        background-color: white;
+      }
+            padding-left: 0px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+      }
+    }
+  }
   table {
-    td {
+    td, th {
         &:first-child {
             padding-left: 0px;
         }
