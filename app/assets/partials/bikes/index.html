@@ -1,0 +1,68 @@
+<ng-include src="'assets/partials/bikes/_nav.html'"></ng-include>
+
+<div id="bikes" class="row">
+  <div class="col-md-3">
+    <a href="{{ photo.link }}" class="thumbnail" ng-repeat="photo in data.photos" target="_blank">
+      <img src="{{ photo.images.standard_resolution.url }}" alt="...">
+    </a>
+  </div>
+  <div class="col-md-9" ng-show="data.summary">
+  <h3>{{data.summary.name}}</h3>
+     <ul class="nav nav-pills sections">
+      <li ng-class="{active: showParts == true}">
+        <a ng-click="showPartsTable('/#/bikes/crosscheck')" class="text-uppercase">Parts</a>
+      </li>
+      <li ng-class="{active: showRides == true}">
+        <a ng-click="showRidesTable('/#/bikes/crosscheck/rides')" class="text-uppercase">Rides</a>
+      </li>
+    </ul>
+  <ul class="list-inline">
+    <li>{{data.summary.total_cost | formatCurrency }}</li>
+    <li>{{data.summary.total_weight | gramsToPounds }}</li>
+    <li>{{data.summary.total_distance | metersToMiles: true }}</li>
+  </ul>
+  <div ng-show="showParts" ng-repeat="categoryParts in data.parts">
+    <h4>{{ categoryParts[0].partcategory }}</h4>
+    <table class="table">
+      <tbody>
+        <tr ng-repeat="part in categoryParts">
+          <td width="80%">
+            <p><strong>{{part.company}}</strong> {{part.item}} <small class="text-uppercase sub-category">{{part.partsubcategory}}</small><p>
+          </td>
+          <td width="10%">{{part.weight}}</td>
+          <td width="10%" class="text-right">
+            <span class="quantity" ng-show="part.quantity > 1">{{part.quantity}} x </span>
+            {{part.unit_cost}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div ng-show="showRides">
+    <table class="table" ng-show="data.rides">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th class="text-center">Distance <small>mi</small></th>
+                <th class="text-center">Elevation <small>ft</small></th>
+                <th class="text-center">Avg Speed <small>mph</small></th>
+                <th class="text-right">Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="ride in data.rides">
+                <td>{{ ride.start_date | amDateFormat:'M.DD.YY' }}</td>
+                <td class="text-center">{{ ride.distance | metersToMiles }}</td>
+                <td class="text-center">{{ ride.total_elevation_gain | metersToFeet }}</td>
+                <td class="text-center">{{ ride.average_speed | metersPerSecToMilesPerHr }}</td>
+                <td class="text-right">{{ ride.moving_time | secToMin }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row text-center">
+      <btn ng-click="loadMoreRides()" ng-show="hasMore" class="btn btn-more">More</btn>
+    </div>
+  </div>
+  </div>
+  </div>
+</div>
