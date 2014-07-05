@@ -4586,6 +4586,9 @@ h1, h2, h3, h4, .navbar, .list-group, th, .btn-more {
 body {
   -webkit-font-smoothing: antialiased; }
 
+.angular-google-map-container {
+  height: 600px; }
+
 .table > thead > tr > th {
   border-bottom: 1px solid #e6e6e6; }
 

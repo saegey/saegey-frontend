@@ -1,8 +1,5 @@
 /* Services */
 
-
-// Demonstrate how to register services
-// In this case it is a simple value service.
 angular.module('app.services', ['ngResource'])
   .factory('BikeDetail',  ['$resource', function($resource) {
     return $resource('http://api.saegey.com/v1/bikes/:tag?group_by=partcategory', {
@@ -23,8 +20,8 @@ angular.module('app.services', ['ngResource'])
    	  limit: '@limit',
     })
   }])
-  .factory('ActivityPlaces',  ['$resource', function($resource) {
-    return $resource('http://api.saegey.com/v1/moves/places?unique=true&page=:page&limit=:limit', {
+  .factory('ActivityBike',  ['$resource', function($resource) {
+    return $resource('http://localhost:3000/v1/activity/bike?page=:page&limit=:limit', {
    	  page: '@page',
    	  limit: '@limit',
     })
@@ -37,5 +34,4 @@ angular.module('app.services', ['ngResource'])
   }])
   .factory('Resume',  ['$resource', function($resource) {
   	return $resource('https://api.github.com/gists/1dc7a850a74e434507b3', {})
-  }])
-  .value('version', '0.1');
+  }]);

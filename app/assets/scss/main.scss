@@ -39,6 +39,8 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+.angular-google-map-container { height: 600px; }
+
 .table > thead > tr > th {
   border-bottom: 1px solid lighten($saegey-gray, 40%);
 }

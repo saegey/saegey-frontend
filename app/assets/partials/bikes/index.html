@@ -51,7 +51,11 @@
         </thead>
         <tbody>
             <tr ng-repeat="ride in data.rides">
-                <td>{{ ride.start_date | amDateFormat:'M.DD.YY' }}</td>
+                <td>
+                  <a href="http://www.strava.com/activities/{{ ride.id }}" target="_blank">
+                    {{ ride.start_date | amDateFormat:'M.DD.YY' }}
+                  </a>
+                </td>
                 <td class="text-center">{{ ride.distance | metersToMiles }}</td>
                 <td class="text-center">{{ ride.total_elevation_gain | metersToFeet }}</td>
                 <td class="text-center">{{ ride.average_speed | metersPerSecToMilesPerHr }}</td>
@@ -59,7 +63,7 @@
             </tr>
         </tbody>
     </table>
-    <div class="row text-center">
+    <div ng-show="data" class="row text-center">
       <btn ng-click="loadMoreRides()" ng-show="hasMore" class="btn btn-more">More</btn>
     </div>
   </div>
