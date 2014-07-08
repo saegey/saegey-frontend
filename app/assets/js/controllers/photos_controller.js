@@ -6,7 +6,7 @@ app.controller('PhotosController', ['$scope', '$routeParams', 'Photos', function
     var type = $routeParams.type || 'photos';
     $scope.activeTab = type;
    
-    Photos.get({type: type, limit: 12, page: page}, function(response) {
+    Photos.get({type: type, limit: 36, page: page}, function(response) {
       $scope.data.photos = response.data;
       $scope.page = $routeParams.page;
 

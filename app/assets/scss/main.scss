@@ -160,16 +160,7 @@ background-color: white;
 }
 
 #activity {
-  h3 {
-    font-size: floor(($font-size-h3 * .95)) !important;
-    font-weight: 300;
-    color: $navbar-default-bg;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-  .nav-pills {
-    margin-bottom: 20px;
-  }
+  margin-top: 20px;
 }
 
 #resume {

@@ -32,6 +32,12 @@ angular.module('app.services', ['ngResource'])
    	  limit: '@limit',
     })
   }])
+  .factory('StravaUpload',  ['$resource', function($resource) {
+    return $resource('http://localhost:3000/v1/strava/upload', {
+      segments: '@segments'
+    })
+  }])
   .factory('Resume',  ['$resource', function($resource) {
   	return $resource('https://api.github.com/gists/1dc7a850a74e434507b3', {})
   }]);
+  

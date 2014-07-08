@@ -4685,14 +4685,8 @@ h1, h2, h3, h4, .navbar, .nav-pills, .small {
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .btn-default.dropdown-toggle {
   background-color: #d9d9d9 !important; }
 
-#activity h3 {
-  font-size: 26px !important;
-  font-weight: 300;
-  color: white;
-  margin-top: 10px;
-  margin-bottom: 10px; }
-#activity .nav-pills {
-  margin-bottom: 20px; }
+#activity {
+  margin-top: 20px; }
 
 #resume blockquote {
   background: white;

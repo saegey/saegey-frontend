@@ -1,8 +1,9 @@
 var app = angular.module('app');
 
-app.controller('ActivityController', ['$scope', '$routeParams', 'ActivityBike', function ($scope, $routeParams, ActivityBike) {
+app.controller('ActivityController', ['$scope', '$routeParams', 'ActivityBike', 'StravaUpload', function ($scope, $routeParams, ActivityBike, StravaUpload) {
     $scope.data = []
     $scope.data = { selected: null };
+    $scope.uploadIsDisabled = 'disabled';
     $scope.map = {
       version: "uknown",
       showTraffic: true,
@@ -25,38 +26,39 @@ app.controller('ActivityController', ['$scope', '$routeParams', 'ActivityBike', 
       draggable: true
     };
 
-    ActivityBike.get({page: 1, limit: 10}, function(response) {
-        $scope.data.rides = response.data;
+    ActivityBike.get({page: 1, limit: 8}, function(response) {
+      $scope.data.rides = response.data;
     });
 
-   //  $scope.myVar = 1;
+    $scope.upload = function() {
+      var rideIds = [];
+      var flatIds = [];
 
-   // //  $scope.$watch('myVar', function() {
-   // //     console.log('hey, myVar has changed!');
-   // // });
+      $scope.data.selected.forEach(function (seg) {
+        rideIds.push({
+          id: $scope.data.rides[seg]._id,
+          parentId: $scope.data.rides[seg].parentId
+        });
+        flatIds.push($scope.data.rides[seg]._id);
+      });
 
-    $scope.buttonClicked = function() {
-      $scope.myVar += 1; // This will trigger $watch expression to kick in
+      StravaUpload.save({}, rideIds, function(response) {
+        response.data.forEach(function(uploadedRide) {
+          $scope.data.rides.forEach(function(existingRide, index) {
+            if (existingRide._id === uploadedRide._id) {
+              $scope.data.rides[index].stravaId = uploadedRide.stravaId;
+            }
+          });
+        });
+        $scope.uploadIsDisabled = "disabled";
+        $scope.data.selected = [];
+      }, function(err) { console.log(err); } );
    };
 
-    $scope.$watch('data.selected', function(newVals, old){
-      // console.log(selectedRides);
-      if ($scope.data.selected) {
-        // ActivityBike.get({page: 1, limit: 10}, function(response) {
-        // $scope.data.rides = response.data;
-        // $scope.map = {
-        //     center: {
-        //       latitude:  response.data[selectedRides || 0].avgLat.toFixed(5),
-        //       longitude: response.data[selectedRides || 0].avgLon.toFixed(5),
-        //     },
-        //     events: {
-        //     tilesloaded: function (map) {
-        //        $scope.$apply(function () {
-        //           $log.info('this is the map instance', map);             
-        //       });
-        //     }
-        //   }
-        // }
+    $scope.$watch('data.selected', function(newVals, old) {
+      console.log($scope.data.selected);
+      if ($scope.data.selected && $scope.data.selected.length > 0) {
+
         $scope.map['polylines'] = [];
         if (newVals) {
           selectedRides = newVals;
@@ -65,6 +67,7 @@ app.controller('ActivityController', ['$scope', '$routeParams', 'ActivityBike', 
         }
         console.log(selectedRides);
         if (selectedRides) {
+          $scope.uploadIsDisabled = "";
           selectedRides.forEach(function(rideId) {
             $scope.map['polylines'].push({
                 path: $scope.data.rides[rideId].trackPoints,
@@ -80,25 +83,9 @@ app.controller('ActivityController', ['$scope', '$routeParams', 'ActivityBike', 
             });
           });
         }
-      console.log($scope.data.selected);
+      } else {
+          $scope.uploadIsDisabled = "disabled";
       }
     }, true);
 }]);
 
-
-// app.controller('ActivitySummaryController', ['$scope', '$routeParams', 'ActivitySummary', function ($scope, $routeParams, ActivitySummary) {
-//     $scope.data = {};
-   
-//     ActivitySummary.get({page: 1, limit: 10}, function(response) {
-//         $scope.data.days = response.data;
-//         $scope.convertToMiles = function(meters) {
-//             return Number((meters * 0.000621371).toPrecision(2)) + " miles";
-//         }
-//         $scope.convertToMinutes = function(seconds) {
-//             return Number((seconds / 60).toPrecision(2));
-//         }
-//         $scope.upcase = function capitaliseFirstLetter(string) {
-//             return string.charAt(0).toUpperCase() + string.slice(1);
-//         }
-//     });
-// }]);
