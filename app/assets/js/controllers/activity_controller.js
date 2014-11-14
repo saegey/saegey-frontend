@@ -4,43 +4,51 @@ app.controller('ActivityController', ['$scope', '$routeParams', 'ActivityBike', 
     $scope.data = []
     $scope.data = { selected: null };
     $scope.uploadIsDisabled = 'disabled';
+    $scope.page = 1;
     $scope.map = {
-      version: "uknown",
-      showTraffic: true,
-      showBicycling: false,
-      showWeather: false,
-      showHeat: false,
-      center: {
-        latitude: 47.6676291746,
-        longitude: -122.3823030559
-      },
-      // options: {
-      //   streetViewControl: false,
-      //   panControl: true,
-      //   maxZoom: 20,
-      //   minZoom: 3
-      // },
-      zoom: 12,
-      pan: true,
-      dragging: true,
-      draggable: true
+        version: "uknown",
+        showTraffic: true,
+        showBicycling: false,
+        showWeather: false,
+        showHeat: false,
+        center: {
+            latitude: 47.6676291746,
+            longitude: -122.3823030559
+        },
+        options: {
+          streetViewControl: false,
+          panControl: true
+        },
+        zoom: 12,
+        pan: true,
+        dragging: true,
+        draggable: true
     };
 
     ActivityBike.get({page: 1, limit: 8}, function(response) {
-      $scope.data.rides = response.data;
+        $scope.data.rides = response.data;
     });
 
-    $scope.upload = function() {
-      var rideIds = [];
-      var flatIds = [];
-
-      $scope.data.selected.forEach(function (seg) {
-        rideIds.push({
-          id: $scope.data.rides[seg]._id,
-          parentId: $scope.data.rides[seg].parentId
+    $scope.data.loadMore = function($){
+        ActivityBike.get({page: $scope.page + 1, limit: 8}, function(response) {
+            $scope.page++;
+            response.data.forEach(function (ride) {
+                $scope.data.rides.push(ride);
+            });
         });
-        flatIds.push($scope.data.rides[seg]._id);
-      });
+    };
+
+    $scope.upload = function() {
+        var rideIds = [];
+        var flatIds = [];
+
+        $scope.data.selected.forEach(function (seg) {
+            rideIds.push({
+                id: $scope.data.rides[seg]._id,
+                parentId: $scope.data.rides[seg].parentId
+            });
+            flatIds.push($scope.data.rides[seg]._id);
+        });
 
       StravaUpload.save({}, rideIds, function(response) {
         response.data.forEach(function(uploadedRide) {

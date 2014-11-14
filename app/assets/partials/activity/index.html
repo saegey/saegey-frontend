@@ -1,30 +1,33 @@
 <div id="activity" class="row">
     <div class="col-md-6">
-            <table class="table" ng-show="data.rides">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Distance</th>
-                        <th>Strava</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                <tr ng-repeat="ride in data.rides">
-                    <td>
-                        <input type="checkbox" checklist-model="data.selected" checklist-value="data.rides.indexOf(ride)">
-                    </td>
-                    <td>
-                        {{ ride.startDate | amDateFormat:'M.DD.YY' }}
-                    </td>
-                    <td>{{ ride.duration | movesToMin }} min</td>
-                    <td>{{ ride.distance | metersToMiles }} miles</td>
-                    <td>{{ ride.stravaId }}</td>
+        <table class="table" ng-show="data.rides">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Distance</th>
+                    <th>Strava</th>
                 </tr>
-                </tbody>
-            </table>
+            </thead>
+            <tbody>
+
+            <tr ng-repeat="ride in data.rides">
+                <td>
+                    <input type="checkbox" checklist-model="data.selected" checklist-value="data.rides.indexOf(ride)">
+                </td>
+                <td>
+                    {{ ride.startDate | amDateFormat:'M.DD.YY' }}
+                </td>
+                <td>{{ ride.duration | movesToMin }} min</td>
+                <td>{{ ride.distance | metersToMiles }} miles</td>
+                <td>{{ ride.stravaId }}</td>
+            </tr>
+            </tbody>
+        </table>
+        <div ng-show="data.rides" class="row text-center">
+            <btn class="btn btn-primary btn-more" ng-click="data.loadMore()">More</btn>
+        </div>
     </div>
         <div class="col-md-6">
         <btn class="btn btn-primary" disabled="{{uploadIsDisabled}}" ng-click="upload()">Upload To Strava</btn>
