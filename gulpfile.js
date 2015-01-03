@@ -166,7 +166,6 @@ gulp.task('tdd', function(done) {
 gulp.task('build', function() {
 
   runSequence(
-    'clean',
     'usemin',
     function() {
       $.util.log('Build complete');

@@ -28,14 +28,17 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
     active: 'bikes'
   }).
   when('/bikes/:tag', {
-    templateUrl: 'assets/partials/bikes/index.html',
+    templateUrl: '../assets/partials/bikes/index.html',
     controller: 'BikesController',
-    active: 'bikes'
+    active: 'bikes',
+    reloadOnSearch: false,
+
   }).
   when('/bikes', {
     templateUrl: 'assets/partials/bikes/index.html',
     controller: 'BikesController',
-    active: 'bikes'
+    active: 'bikes',
+    reloadOnSearch: false,
   }).
   when('/photos/:type', {
     templateUrl: 'assets/partials/photos/index.html',
@@ -82,26 +85,26 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
   otherwise({
     redirectTo: '/'
   });
-  $locationProvider.html5Mode(true);
+  // $locationProvider.html5Mode(true);
 });
 
 app.run(function($rootScope, $http, $location, $route, Auth) {
   $rootScope.$route = $route;
 
   //watching the value of the currentUser variable.
-  $rootScope.$watch('currentUser', function(currentUser) {
-    // if no currentUser and on a page that requires authorization then try to update it
-    // will trigger 401s if user does not have a valid session
-    if (!currentUser && (['/', '/login', '/logout', '/signup'].indexOf($location.path()) == -1)) {
-      Auth.currentUser();
-    }
-  });
+  // $rootScope.$watch('currentUser', function(currentUser) {
+  //   // if no currentUser and on a page that requires authorization then try to update it
+  //   // will trigger 401s if user does not have a valid session
+  //   if (!currentUser && (['/', '/login', '/logout', '/signup'].indexOf($location.path()) == -1)) {
+  //     Auth.currentUser();
+  //   }
+  // });
 
-  // On catching 401 errors, redirect to the login page.
-  $rootScope.$on('event:auth-loginRequired', function() {
-    $location.path('/login');
-    return false;
-  });
+  // // On catching 401 errors, redirect to the login page.
+  // $rootScope.$on('event:auth-loginRequired', function() {
+  //   $location.path('/login');
+  //   return false;
+  // });
 });
 
 app.controller('ResumeController', ['$scope', 'Resume',

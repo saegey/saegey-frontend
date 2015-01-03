@@ -1,4 +1,4 @@
-<div class="navbar navbar-default" role="navigation" ng-controller="HeaderController" ng-show="notHome('/')">
+<div class="navbar navbar-default" role="navigation" ng-controller="HeaderController">
     <div class="container">
       <div class="navbar-top">
         <div class="navbar-header">
@@ -8,16 +8,6 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/#/">⌘Saegey</a>
-        </div>
-        <div class="navbar-collapse collapse profile-links">
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="http://instagram.com/saegey">Instagram</i></a></li>
-              <li><a href="http://github.com/saegey">Github</a></li>
-              <li><a href="http://linkedin.com/in/saegey/">LinkedIn</i></a></li>
-              <li><a href="http://twitter.com/saegey">Twitter</a></li>
-              <li><a href="https://www.facebook.com/saegey">Facebook</i></a>
-          </ul>
         </div>
       </div>
         <div class="navbar-collapse collapse navbar-top">
@@ -25,7 +15,6 @@
                 <li ng-class="{active: $route.current.active == 'about'}"><a href="/#/about">About</a></li>
                 <li ng-class="{active: $route.current.active == 'bikes'}"><a href="/#/bikes">Bikes</a></li>
                 <li ng-class="{active: $route.current.active == 'photos'}"><a href="/#/photos">Photos</a></li>
-                <li ng-class="{active: $route.current.active == 'activity'}"><a href="/#/activity">Activity</a></li>
                 <li ng-class="{active: $route.current.active == 'code'}"><a href="/#/code">Code</a></li>
             </ul>
         </div>

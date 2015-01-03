@@ -1,16 +1,31 @@
-/* Services */
+//* Services */
 
 angular.module('app.services', ['ngResource'])
-  .factory('BikeDetail', ['$resource',
+  .factory('BikeDetail', ['$resource', function($resource) {
+    return $resource(
+      'https://saegey-bike-data-service.herokuapp.com/v1/bikes/:tag?group_by=:group_by',
+      {group_by: '@group_by'},
+      {
+        list : {
+          method : 'GET',
+          cache : true
+        }
+      }
+    );
+  }])
+  .factory('BikeIndex', ['$resource',
     function($resource) {
-      return $resource('http://api.saegey.com/v1/bikes/:tag?group_by=partcategory', {
-        tag: '@tag'
-      })
+      return $resource('https://saegey-bike-data-service.herokuapp.com/v1/bikes', {}, {
+        list : {
+          method : 'GET',
+          cache : true
+        }
+      });
     }
   ])
   .factory('BikeRides', ['$resource',
     function($resource) {
-      return $resource('http://api.saegey.com/v1/bikes/:tag/rides?limit=:limit&page=:page', {
+      return $resource('https://saegey-bike-data-service.herokuapp.com/v1/bikes/:tag/rides?limit=:limit&page=:page', {
         tag: '@tag',
         page: '@page',
         limit: '@limit',
@@ -19,16 +34,8 @@ angular.module('app.services', ['ngResource'])
   ])
   .factory('Photos', ['$resource',
     function($resource) {
-      return $resource('http://api.saegey.com/v1/instagram/:type?page=:page&limit=:limit', {
+      return $resource('https://saegey-bike-data-service.herokuapp.com/v1/instagram/:type?page=:page&limit=:limit', {
         type: '@type',
-        page: '@page',
-        limit: '@limit',
-      })
-    }
-  ])
-  .factory('ActivityBike', ['$resource',
-    function($resource) {
-      return $resource('http://localhost:3000/v1/activity/bike?page=:page&limit=:limit', {
         page: '@page',
         limit: '@limit',
       })
@@ -36,7 +43,7 @@ angular.module('app.services', ['ngResource'])
   ])
   .factory('ActivitySummary', ['$resource',
     function($resource) {
-      return $resource('http://api.saegey.com/v1/moves/summary?unique=true&page=:page&limit=:limit', {
+      return $resource('https://saegey-bike-data-service.herokuapp.com/v1/moves/summary?unique=true&page=:page&limit=:limit', {
         page: '@page',
         limit: '@limit',
       })

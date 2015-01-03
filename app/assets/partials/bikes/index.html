@@ -1,13 +1,24 @@
-<ng-include src="'assets/partials/bikes/_nav.html'"></ng-include>
+<ng-include src="'../assets/partials/bikes/_nav.html'"></ng-include>
 
 <div id="bikes" class="row">
   <div class="col-md-3">
     <a href="{{ photo.link }}" class="thumbnail" ng-repeat="photo in data.photos" target="_blank">
-      <img src="{{ photo.images.standard_resolution.url }}" alt="...">
+      <img ng-src="{{ photo.images.standard_resolution.url }}" alt="..."/>
     </a>
   </div>
-  <div class="col-md-9" ng-show="data.summary">
-  <h3>{{data.summary.name}}</h3>
+  <div class="col-md-9" ng-show="data.components">
+      <!-- Single button -->
+    <div class="btn-group pull-right" ng-show="showParts">
+      <button type="button" class="btn btn-default dropdown-toggle text-uppercase" data-toggle="dropdown" aria-expanded="false">
+        Group By <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu">
+        <li ng-class="{active: data.groupBy === 'component_type'}"><a ng-click="groupBy('component_type')">Component</a></li>
+        <li ng-class="{active: data.groupBy === 'manufacturer'}"><a ng-click="groupBy('manufacturer')">Manufacturer</a></li>
+        <li ng-class="{active: data.groupBy === 'source'}"><a ng-click="groupBy('source')">Source</a></li>
+      </ul>
+    </div>
+  <h3>{{data.bike_name}}</h3>
      <ul class="nav nav-pills sections">
       <li ng-class="{active: showParts == true}">
         <a ng-click="showPartsTable('/#/bikes/crosscheck')" class="text-uppercase">Parts</a>
@@ -17,25 +28,26 @@
       </li>
     </ul>
   <ul class="list-inline">
-    <li>{{data.summary.total_cost | formatCurrency }}</li>
-    <li>{{data.summary.total_weight | gramsToPounds }}</li>
-    <li>{{data.summary.total_distance | metersToMiles: true }}</li>
+    <li>{{data.total_price}}</li>
+    <li>{{data.weight}}</li>
   </ul>
-  <div ng-show="showParts" ng-repeat="categoryParts in data.parts">
-    <h4>{{ categoryParts[0].partcategory }}</h4>
+  <div ng-show="showParts" ng-repeat="categoryParts in data.components">
     <table class="table">
-      <tbody>
-        <tr ng-repeat="part in categoryParts">
+        <tr>
+          <th>{{ categoryParts.group }}</th>
+          <th>{{categoryParts.weight}}</th>
+          <th><span class="pull-right">{{categoryParts.cost}}</span></th>
+        </tr>
+        <tr ng-repeat="part in categoryParts.parts">
           <td width="80%">
-            <p><strong>{{part.company}}</strong> {{part.item}} <small class="text-uppercase sub-category">{{part.partsubcategory}}</small><p>
+            <p>{{part.manufacturer}} {{part.model}}<p>
           </td>
           <td width="10%">{{part.weight}}</td>
           <td width="10%" class="text-right">
             <span class="quantity" ng-show="part.quantity > 1">{{part.quantity}} x </span>
-            {{part.unit_cost}}
+            {{part.cost}}
           </td>
         </tr>
-      </tbody>
     </table>
   </div>
   <div ng-show="showRides">
