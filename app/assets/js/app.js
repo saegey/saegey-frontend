@@ -11,7 +11,8 @@ var app = angular.module('app', [
   'hc.marked',
   'angular-loading-bar',
   'google-maps',
-  'checklist-model'
+  'checklist-model',
+  // 'app.templates',
   // 'restangular',
   // 'pasvaz.bindonce',
 ]);
@@ -19,11 +20,11 @@ var app = angular.module('app', [
 app.config(function($routeProvider, $locationProvider, $httpProvider) {
   $routeProvider.
   when('/', {
-    templateUrl: 'assets/partials/index.html',
+    templateUrl: '../assets/partials/index.html',
     active: 'home'
   }).
   when('/bikes/:tag/rides', {
-    templateUrl: 'assets/partials/bikes/rides.html',
+    templateUrl: '../assets/partials/bikes/rides.html',
     controller: 'BikeController',
     active: 'bikes'
   }).
@@ -35,51 +36,51 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
 
   }).
   when('/bikes', {
-    templateUrl: 'assets/partials/bikes/index.html',
+    templateUrl: '../assets/partials/bikes/index.html',
     controller: 'BikesController',
     active: 'bikes',
     reloadOnSearch: false,
   }).
   when('/photos/:type', {
-    templateUrl: 'assets/partials/photos/index.html',
+    templateUrl: '../assets/partials/photos/index.html',
     controller: 'PhotosController',
     active: 'photos'
   }).
   when('/photos', {
-    templateUrl: 'assets/partials/photos/index.html',
+    templateUrl: '../assets/partials/photos/index.html',
     controller: 'PhotosController',
     active: 'photos'
   }).
   when('/code', {
-    templateUrl: 'assets/partials/code/index.html',
+    templateUrl: '../assets/partials/code/index.html',
     controller: 'CodeController',
     active: 'code'
   }).
   when('/login', {
-    templateUrl: 'assets/partials/login.html',
+    templateUrl: '../assets/partials/login.html',
     controller: 'LoginCtrl'
   }).
   when('/signup', {
-    templateUrl: 'assets/partials/signup.html',
+    templateUrl: '../assets/partials/signup.html',
     controller: 'SignupCtrl'
   }).
   when('/activity', {
-    templateUrl: 'assets/partials/activity/index.html',
+    templateUrl: '../assets/partials/activity/index.html',
     controller: 'ActivityController',
     active: 'activity'
   }).
   when('/activity/summary', {
-    templateUrl: 'assets/partials/activity/index.html',
+    templateUrl: '../assets/partials/activity/index.html',
     controller: 'ActivityController',
     active: 'activity'
   }).
   when('/resume', {
-    templateUrl: 'assets/partials/resume/index.html',
+    templateUrl: '../assets/partials/resume/index.html',
     controller: 'ResumeController',
     active: 'resume'
   }).
   when('/about', {
-    templateUrl: 'assets/partials/about/index.html',
+    templateUrl: '../assets/partials/about/index.html',
     active: 'about'
   }).
   otherwise({
