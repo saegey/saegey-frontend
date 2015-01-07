@@ -6,6 +6,7 @@ app.controller('BikesController', ['$scope', '$location','$routeParams', 'BikeDe
     $scope.data = {};
     if (!$routeParams.tag) { $routeParams.tag = 'crosscheck'; }
     if (!$routeParams.group_by) { $routeParams.group_by = 'component_type'; }
+    if (!$routeParams.view) { $routeParams.view = 'parts'; }
 
     BikeIndex.get({}, function(response) {
         $scope.bikeIndex = response.bikes;
@@ -13,13 +14,17 @@ app.controller('BikesController', ['$scope', '$location','$routeParams', 'BikeDe
 
     BikeDetail.get({tag: $routeParams.tag, group_by: $routeParams.group_by}, function(response) {
         $scope.data.components = response.components;
-        $scope.showParts = true;
         $scope.data.bike_name = response.bike_name;
         $scope.data.total_price = response.total_price;
         $scope.data.weight = response.weight;
         $scope.data.photos = response.photos;
         $scope.activeTab = $routeParams.tag;
         $scope.data.groupBy = $routeParams.group_by;
+        if ($routeParams.view === 'parts') {
+            $scope.showParts = true;
+        } else {
+            $scope.showRides = true;
+        }
     });
 
     BikeRides.get({tag: $routeParams.tag, page: page, limit: limit}, function(response) {
@@ -35,6 +40,7 @@ app.controller('BikesController', ['$scope', '$location','$routeParams', 'BikeDe
                 $scope.data.rides = response.data;
             });
         }
+        $location.search('view', 'rides');
     }
 
     $scope.loadMoreRides = function() {
@@ -49,6 +55,7 @@ app.controller('BikesController', ['$scope', '$location','$routeParams', 'BikeDe
     $scope.showPartsTable = function() {
         $scope.showParts = true;
         $scope.showRides = false;
+        $location.search('view', 'parts');
     }
 
     $scope.groupBy = function(group) {

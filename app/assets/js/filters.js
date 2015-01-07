@@ -22,7 +22,14 @@ angular.module('app.filters', [])
   })
   .filter('secToMin', function () {
     return function (input) {
-      return Math.round((input/60).toFixed(2)) + ' min';
+      numMin = (input/60).toFixed(2);
+      if (numMin > 60) {
+        numHours = Math.floor(numMin / 60);
+        numMin = numMin - (numHours * 60);
+        return numHours + ' hr ' + Math.round(numMin) + ' min';
+      } else {
+        return Math.round(numMin) + ' min';
+      }
     };
   })
   .filter('gramsToPounds', function() {
@@ -32,9 +39,7 @@ angular.module('app.filters', [])
   })
   .filter('formatCurrency', function() {
     return function (input) {
-      return '$' + input.replace(/\d(?=(\d{3})+\.)/g, '$&,')
-                .split(".")[0]
-                .replace('$', '');
+      return numeral(input).format('$0,0.00');
     };
   })
   .filter('movesToMin', function() {

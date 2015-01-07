@@ -21,15 +21,15 @@
   <h3>{{data.bike_name}}</h3>
      <ul class="nav nav-pills sections">
       <li ng-class="{active: showParts == true}">
-        <a ng-click="showPartsTable('/#/bikes/crosscheck')" class="text-uppercase">Parts</a>
+        <a ng-click="showPartsTable()" class="text-uppercase">Parts</a>
       </li>
       <li ng-class="{active: showRides == true}">
-        <a ng-click="showRidesTable('/#/bikes/crosscheck/rides')" class="text-uppercase">Rides</a>
+        <a ng-click="showRidesTable()" class="text-uppercase">Rides</a>
       </li>
     </ul>
   <ul class="list-inline">
-    <li>{{data.total_price}}</li>
-    <li>{{data.weight}}</li>
+    <li>{{data.total_price | formatCurrency }}</li>
+    <li>{{data.weight | gramsToPounds }} </li>
   </ul>
   <div ng-show="showParts" ng-repeat="categoryParts in data.components">
     <table class="table">
