@@ -10,11 +10,6 @@ var app = angular.module('app', [
   'angularMoment',
   'hc.marked',
   'angular-loading-bar',
-  'google-maps',
-  'checklist-model',
-  // 'app.templates',
-  // 'restangular',
-  // 'pasvaz.bindonce',
 ]);
 
 app.config(function($routeProvider, $locationProvider, $httpProvider) {
@@ -33,7 +28,6 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
     controller: 'BikesController',
     active: 'bikes',
     reloadOnSearch: false,
-
   }).
   when('/bikes', {
     templateUrl: '../assets/partials/bikes/index.html',
@@ -63,16 +57,6 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
   when('/signup', {
     templateUrl: '../assets/partials/signup.html',
     controller: 'SignupCtrl'
-  }).
-  when('/activity', {
-    templateUrl: '../assets/partials/activity/index.html',
-    controller: 'ActivityController',
-    active: 'activity'
-  }).
-  when('/activity/summary', {
-    templateUrl: '../assets/partials/activity/index.html',
-    controller: 'ActivityController',
-    active: 'activity'
   }).
   when('/resume', {
     templateUrl: '../assets/partials/resume/index.html',

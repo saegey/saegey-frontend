@@ -10,7 +10,7 @@ app.controller('BikesController', ['$scope', '$location','$routeParams', 'BikeDe
     BikeIndex.get({}, function(response) {
         $scope.bikeIndex = response.bikes;
     });
-   
+
     BikeDetail.get({tag: $routeParams.tag, group_by: $routeParams.group_by}, function(response) {
         $scope.data.components = response.components;
         $scope.showParts = true;
@@ -60,24 +60,6 @@ app.controller('BikesController', ['$scope', '$location','$routeParams', 'BikeDe
     }
 
     $scope.loadBike = function(bike_name) {
-        // BikeDetail.get({tag: bike_name, group_by: $routeParams.group_by}, function(response) {
-        //     $scope.data.components = response.components;
-        //     $scope.showParts = true;
-        //     $scope.data.bike_name = response.bike_name;
-        //     $scope.data.total_price = response.total_price;
-        //     $scope.data.weight = response.weight;
-        //     $scope.data.photos = response.photos;
-        //     $scope.activeTab = bike_name;
-        //     $scope.data.groupBy = $routeParams.group_by;
-        // });
-
-        // BikeRides.get({tag: $routeParams.tag, page: page, limit: limit}, function(response) {
-        //     $scope.data.rides = response.data;
-        //     $scope.hasMore = response.has_more;
-        // });
-        // $scope.showRides = true;
-        // $scope.showRides = false;
-        //$location.search('tag', bike_name);
         $location.path('/bikes/' + bike_name).search('group_by', $routeParams.group_by);
     }
 }]);
