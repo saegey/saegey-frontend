@@ -34,7 +34,7 @@ angular.module('app.services', ['ngResource'])
   ])
   .factory('Photos', ['$resource',
     function($resource) {
-      return $resource('https://saegey-bike-data-service.herokuapp.com/v1/instagram/:type?page=:page&limit=:limit', {
+      return $resource('https://saegey-bike-data-service.herokuapp.com/v1/photos/:type?page=:page&limit=:limit', {
         type: '@type',
         page: '@page',
         limit: '@limit',

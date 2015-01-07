@@ -8,7 +8,6 @@ angular.module('app.filters', [])
             } else {
                 return (input * 0.000621371).toFixed(2);
             }
-            
         }
     })
     .filter('metersToFeet', function () {

@@ -2,11 +2,11 @@
   <div class="col-md-12">
     <div class="nav-sub">
       <ul class="nav nav-pills">
-      <li ng-class="{active: activeTab === 'photos'}">
-        <a href="/#/photos" class="text-uppercase">#MINE</a>
+      <li ng-class="{active: activeTab === 'user'}">
+        <a href="/#/photos" class="text-uppercase">I took</a>
       </li>
       <li ng-class="{active: activeTab === 'liked'}">
-        <a href="/#/photos/liked" class="text-uppercase">#LIKED</a>
+        <a href="/#/photos/liked" class="text-uppercase">I like</a>
       </li>
     </ul>
     </div>
@@ -17,7 +17,7 @@
     <div class="col-md-3" ng-repeat="photo in data.photos">
       <div class="thumbnail">
           <a href="{{ photo.link }}" target="_blank">
-              <img src="{{ photo.images.standard_resolution.url }}">
+              <img ng-src="{{ photo.images.standard_resolution.url }}">
           </a>
       </div>
     </div>
