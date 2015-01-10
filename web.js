@@ -1,3 +1,7 @@
+if (process.env.NEW_RELIC_LICENSE_KEY) {
+  require('newrelic');
+}
+
 var gzippo = require('gzippo');
 var express = require('express');
 var app = express();
